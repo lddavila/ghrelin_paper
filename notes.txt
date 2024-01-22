@@ -1,0 +1,220 @@
+-sent dirk the thing he requested
+-fixed my bug which caused 0 to show up when I split the task
+-need to fix it so that when a task type is split the number of figures counted is updated in both, not just in one 
+-found and fixed a bug which showed that for some reason I was counting some things twice
+
+-randomly select striosome and matrix neurons in a database
+-ensure that they do not have the same rat id and date 
+-if this doesn't work then try to to modify the range of times which we look at 
+-Count how many 
+
+
+Things to mention to alexander
+-Tell him that the code I was using does indeed ensure that the pairs have the same rat id and session Id it wasn't just occuring naturally because of correlation like he thought
+-for the bootstrap I adjusted it like I said to ensure that the session dates and rat ids are not the same
+-because the non correlated strio-matrix pairs are random they might not be the same length
+-So to correct this I just cut down to the lenght of the smaller one
+
+
+-Create KS test comparing cb stress to everything else
+-create KS test comparing cb control to other control task types
+-Examples of Patterns
+-Example of Cross Correlation 
+-Example of 
+
+-one thats absolutely flat
+-one that has really clear correlation
+-in stress demonstrate 
+
+-for pattern counts go back to bar charts instead of line charts
+-use the bootstrap used for patterns counts as the threshold line
+-Put cost beneft stress/control on the same chart along with TR stress/control 
+-create bar chart of pattern counts for just Control 
+
+skewness for TR and CB in normal and Stress
+
+
+-We have CB L1 Task for Ghrelin which was left out of paper
+-we also have L3 task which is high CB task
+-competition between ghrelin and toy,
+-everyone says that ghrelin is a food hormone
+-it is a very small amount of data, and as a result clusters may fail
+-in the beginning there is a habituation period, afterwards there's a period where the toy is new and the rat will choose it more, when the toy is no longer new it will choose the food more
+-the process repeats when a new toy is introduced
+
+______________Experiments____________________________
+-L1 Ghrelin vs Saline
+-L3 Ghrelin vs Saline
+-Food Deprivation is 2 weeks so it can be binnded differently
+-Pre Feeding (get food in home cage before running the task) 
+-toy data
+-Look at how alcohol affects L1 task or L1 and L3
+-Light vs Toy vs Ghrelin vs Saline
+-regular animals = lg_boost (high calorie diet)
+-animals which get boost and ethonal
+-L1 task and L3 task before ethonal and boost administration
+-compare before lg_boost/lg_etho began and after it began
+-
+-check how alchohol affects performance of L1 task or how alcohol affects L3 task 
+
+
+there are multiple parameters including novelty, 
+
+
+-focus on session 4,5,6,and 7 of the toy ghrelin vs saline
+-sessions 4,5,6,7 are the sessions where they are both on saline and ghrelin
+-sessions 8 and 9 have a different toy 
+-rats 
+-session 1 the first time they were run on ghrelin and the first time they were run on saline 
+-session 1-5 they use a fake toy rat
+-session 6 & 7 they use a stick
+-session 8 & 9 use another toy
+-freya, bastet, emma, and stich will be excluded
+
+
+saline/ghrelin 1 toy
+saline/ghrelin 2nd toy
+
+
+Groups:
+Ghrelin/Saline sessions 1-5
+Ghrelin/Saline sessions 6-7
+Ghrelin/Saline session 8-9
+Alcohol has 2 concentrations of ghrelin, 1x and 2x which may or may not be combined
+
+safa
+pre feeding
+food deprivation
+l1 l2 l3
+
+
+ghrelinfeaturetable
+-because of a miscommunication some animals ran extra stick trials and others got less 
+-data for session 5 was non significant either way 
+- if data has session 5 and stick then exlcude  
+-because session 5 had an error, they took session 4 data and put it into session 5 as a way to fill in the empty spaces 
+
+-l1l3 could have a range of 290-320
+-nothing means regular trial with l1 
+-food deprivation is sometimes paired with ghrelin
+-2x ghrelin is another group 
+
+-Ideas
+
+
+1.)Radial 	0.5%
+2.)Horizontal 	1%
+3.)Grid 	5%
+4.)Diagonal 	9%
+
+featuretable
+-food deprivation
+	rotationpts - rotationpts
+	stoppingpts - stoppingpts
+	
+
+featuretable2
+-oxy
+-isoflurene
+	rotationpts - rotationpts
+	stoppingpts - stoppingpts
+-ghrelin
+	rotationpts - rotationpts
+	stoppingpts - stoppingpts
+-lg_boost
+-lg_etoh
+-saline
+-pre feeding
+
+
+-run Atanu's scripts to recreate stopping pts, rotationpts reaction, and travel pixel
+-Atanu's figures used 
+-stoppingpts_per_unittravel_method6
+-rotationptsmethod4
+-distanceaftertoneuntillimitingtimestamp
+-reaction time is in featuretable
+
+number of stopping points and travel pixel are the best
+
+
+travel_pixel 
+-nodulus outputs x and y
+-nodulus uses cameras to track
+-camera is 1024x1024 pixels
+-pixels are in millimeters
+-Atanu finds the edges of the cage
+-he removed reflection
+-then he calculates travel pixel
+-which can be converted to whatever shape we wish
+-uses center and only
+
+distance_traveled
+-calculate euclidian distance between last point and next point for the entire time series
+
+
+run_time/approach time 
+-number of seconds from once the tone is played to the time the rat gets to the feeder
+-check main figure 2 legend
+-if nan is recorded, then the rat did not approach feeder
+
+stopping points
+-calculates when x and y (position of the animal) doesn't change for a certain amount of time
+-check supplemental figure 1 legend
+-the parameters can change, stopping pts 6 should be best 
+
+rotation points
+-if the animal's center and head change an angle within a certain time 
+-not the best feature 
+-calculated the sum of the total number or rotations
+-ghrelin feature table doesn't have 
+-in feature table2 has total number of rotations
+-in ghrelin featuretable it has #of rotation points per unit travelled
+	-this means that if we need # of rotation points in ghrelin table we must multiply #of rotation points by the distance_traveled_until_limiting_timestamp column, this gives the actual number of rotations 
+
+reaction time
+-the differerence between the last x and last y
+-the difference between the difference between the last x and last y
+-the first time we see a diff above a certain threshold was the reaction time 
+-how long after the tone that the rat reacts
+-alexander doesn't like this because it has no units
+-check supplemental figure 2f for reaction time for example
+-the time stamp of the first big acceleration
+
+big_acceleration
+-check acceleration outlier and move median 
+-consider clustering accelerationoutlier_movemedian
+
+
+
+
+
+questions:
+-where are these files called things like rotationPtsOutputs1to111136 generated?
+-what do they contain?
+-I see this in concatenateRotationTimeStamps.m
+-where does the actual uploading to the database occur, in what file?
+-what does rotationPtsOutputs2.m do?
+
+
+
+Steps
+1.) https://github.com/atanugiri/Feature-Extraction/blob/main/Run%20Time/entryExitTimeStampFun.m
+n.) exec connection (update
+
+
+-Knowing Atanu's solution, and ensuring that I implement it as well is important because the arena changes sizes as it focuses, and we have to account for this, and Atanu's codes already do, so need to coordinate with him on this
+-Along with psychometrical functions plot the features across trials
+
+Distance Travelled
+-See trajectory of animal
+-If there's a sudden crazy jump in x coordinates
+-the camera thinks that the rats are in the middle 
+-make sure the camera is seeing 4 squares with 4 mazes
+-sometimes the edges may shift, but the feeder zones do not, this is another error
+
+-supplemental figure 2 has good examples of what trial data should look like, if it's something wildly different you can probably assume something is wrong 
+-
+
+
+
+
