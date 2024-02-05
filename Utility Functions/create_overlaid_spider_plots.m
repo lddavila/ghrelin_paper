@@ -19,7 +19,7 @@ for i=1:length(experiment)
     formatted_legend_list{end+1} = char(experiment(i));
 end
 legend(formatted_legend_list,'Location','southoutside')
-disp(strcat(spider_plot_dir,"\",experiment(1), " vs ", experiment(2)," Spider Plot.fig"))
+% disp(strcat(spider_plot_dir,"\",experiment(1), " vs ", experiment(2)," Spider Plot.fig"))
 saveas(gcf,strcat(spider_plot_dir,"\",strrep(experiment(1),"_",""), " vs ", strrep(experiment(2),"_","")," Spider Plot.fig"),"fig");
 close(gcf);
 end
