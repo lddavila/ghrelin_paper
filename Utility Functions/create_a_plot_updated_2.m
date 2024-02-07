@@ -64,7 +64,11 @@ number_of_data_points = size(xVsY,1);
 
 for i =1:number_of_clusters
     indexes = find(U(i,:)==maxU);
+    scatter(xVsY(indexes,1),xVsY(indexes,2))
+    hold on;
+    plot(centers(i,1),centers(i,2),"xk",MarkerSize=15,LineWidth=3);
 
+    
     %% add the labels to each data point which tells us the name and date of the rats
     all_scatter_objects{end+1} = scatter(xVsY(indexes,1),xVsY(indexes,2));
     s = all_scatter_objects{i};
@@ -99,5 +103,5 @@ ylim([-20,20])
 home_dir = cd(folder_where_figures_should_be_saved);
 % saveas(fig_handle,strcat(folder_where_figures_should_be_saved,"\",experiment," ", feature, " ", xAxis, " vs. ", yAxis, " MPC ",string(best_mpc),".fig"), "fig")
 cd(home_dir);
-close(fig_handle)
+% close(fig_handle)
 end
