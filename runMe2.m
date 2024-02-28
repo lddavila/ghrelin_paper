@@ -249,7 +249,7 @@ concatenate_many_plots("First_and_last_bin_euc_dist_hist","all_first_and_last_bi
 
 %% get directories with rebinned data
 experiment_list = ["Baseline", "Oxy","Boost_And_Etho","Ghrelin","Saline","Food_Deprivation"];
-rebinned_dirs = get_rebinned_directories("Rebinned Cluster Tables",experiment_list);
+rebinned_dirs = get_rebinned_directories("Rebinned Cluster Tables Version 2",experiment_list);
 
 %% get euclidian distance between each rats first and last bin
 experiment_list = ["Baseline", "Oxy","Boost_And_Etho","Ghrelin","Saline","Food_Deprivation"];
@@ -262,10 +262,16 @@ concatenate_many_plots("First_and_last_bin_overlay_plots","First_and_last_bin_ov
 experiment_list = ["Baseline", "Oxy","Boost_And_Etho","Ghrelin","Saline","Food_Deprivation"];
 get_euc_dist_between_rats_first_and_last_bin_for_sp_plts(rebinned_dirs,experiment_list,true,["RP4_"],"First_and_last_bin_Spider_plots",true);
 
-%% something random
-one = "C:\Users\ldd77\OneDrive\Desktop\Main Fig 6 Oxy";
-two = "C:\Users\ldd77\OneDrive\Desktop\Supp Fig 5 Food Dep";
-three = "C:\Users\ldd77\OneDrive\Desktop\Supp Fig 7 Alcohol"; 
-concatenate_many_plots(one,"1.pdf","ALL_PDFS");
-concatenate_many_plots(two,"2.pdf","ALL_PDFS");
-concatenate_many_plots(three,"3.pdf","ALL_PDFS");
+%% migration plots updated
+home_dir=cd("Baseline_Oxy_FoodDep_BoostAndEtho_Ghrelin_Saline_Cluster_Tables");
+addpath(pwd);
+cd(home_dir)
+% Below lines and the functions they used are authored by Atanu Giri
+% clusterWithDifferentXY('Baseline RP1_1.xlsx', 'Baseline SP_1.xlsx'); %Fig 5j
+% BaselineVsTreatmentCluster('Baseline', 'Food_Deprivation') %fig 5k
+% clusterWithDifferentXY('Baseline ET_1.xlsx', 'Baseline RP1_1.xlsx') %fig 6t
+% clusterWithDifferentXY('Baseline SP_1.xlsx', 'Baseline ET_1.xlsx') %extended figure 7k
+
+BaselineVsTreatmentCluster('Baseline', 'Food_Deprivation') %will produce BLvsFD.fig.
+BaselineVsTreatmentCluster('Baseline', 'Oxy')% will produce ConVsOxy.fig.
+BaselineVsTreatmentCluster('Baseline', 'Boost_and_Etho') %will produce ConVsAlc.fig.
